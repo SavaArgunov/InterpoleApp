@@ -1,0 +1,42 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:InterpoleApp.ViewModels"
+        x:Class="InterpoleApp.Views.AddComplaintsView"
+        x:DataType="vm:AddComplaintsViewModel"
+        Width="400" Height="300"
+        Title="Додати скаргу"
+        WindowStartupLocation="CenterOwner">
+
+    <Grid Margin="20" ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*,*">
+        <StackPanel Grid.Row = "0" Grid.ColumnSpan="2">
+            <TextBlock  Height="25" Text="Тема порушення" />
+            <TextBox  Height="25" Watermark="Тема" Text="{Binding Title}" />
+        </StackPanel>
+        <StackPanel Grid.Row = "1" Grid.ColumnSpan="2">
+            <TextBlock Height="25" Text="Країна скарги"></TextBlock>
+            <TextBox Height="25" Watermark="Країна" Text="{Binding Country}" />
+        </StackPanel>
+        <StackPanel Grid.Row = "2" Grid.ColumnSpan="2">
+            <TextBlock Height="25" Text="Заявник"></TextBlock>
+            <TextBox  Height="25" Watermark="МВС Країни" Text="{Binding Department}" />
+        </StackPanel>
+        <StackPanel Grid.Row = "3" Grid.ColumnSpan="2">
+            <TextBlock Height="25" Text="Опис порушення"></TextBlock>
+            <TextBox  Height="25" Watermark="Зріст" Text="{Binding Description}" />
+        </StackPanel>
+        <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
+            <TextBlock Height="25" Text="Пов'язаний порушник"></TextBlock>
+            <ComboBox 
+                ItemsSource="{Binding CriminalsList}" SelectedItem="{Binding RelatedCriminal}">
+                <ComboBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+            </ComboBox>
+        </StackPanel>
+        <Button Grid.Column="1" Grid.Row = "5" Content="Сохранити"
+                Command="{Binding SaveCommand}"
+                HorizontalAlignment="Right" Width="100"/>
+    </Grid>
+</Window>
