@@ -1,0 +1,35 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:InterpoleApp.ViewModels"
+    xmlns:models="clr-namespace:InterpoleApp.Models"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    x:Class="InterpoleApp.Views.ComplaintsView"
+    x:DataType="vm:ComplaintsViewModel">
+    <Grid RowDefinitions="Auto,Auto,Auto,*" ColumnDefinitions="*,*,*,*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Заяви до Інтерполу"></TextBlock>
+        <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Watermark="Пошук...."></TextBox>
+        <Button Grid.Row="0" Grid.Column="2" Content="Додати" Click="AddButton_Click"></Button>
+        <ScrollViewer Grid.Row="3" Grid.ColumnSpan="4">
+            <ItemsControl ItemsSource="{Binding FilteredComplaints}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate x:DataType="models:Complaint">
+                        <Border Background="#2A2A2A"
+                                CornerRadius="6"
+                                Padding="10"
+                                Margin="0 0 0 10"
+                                BorderBrush="#444"
+                                BorderThickness="1">
+                            <Grid ColumnDefinitions="2*,*,*,Auto">
+                                <TextBlock Grid.Column="0" Text="{Binding Title}" FontWeight="Bold" />
+                                <TextBlock Grid.Column="1" Text="{Binding Country}" />
+                                <TextBlock Grid.Column="2" Text="{Binding Department}" />
+                                <TextBlock Grid.Column="3" Text="{Binding RelatedCriminal.FullName}" />
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>    
+    </Grid>
+</UserControl>    
