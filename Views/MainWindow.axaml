@@ -1,0 +1,85 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="https://github.com/avaloniaui"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:InterpoleApp"
+        xmlns:views="clr-namespace:InterpoleApp.Views"
+        xmlns:vm="clr-namespace:InterpoleApp.ViewModels"
+        x:DataType="vm:MainViewModel"
+        x:Class="InterpoleApp.Views.MainWindow"
+        Title="Навигация в Avalonia">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="33*"/>
+            <ColumnDefinition Width="33*"/>
+        </Grid.ColumnDefinitions>
+        <Border 
+            Grid.Row="0" 
+            Grid.ColumnSpan="3"
+            Height="50"
+            Background="Indigo"
+            BorderBrush="Gray"
+            BorderThickness="1"
+            CornerRadius="6"
+            Padding="10"
+            Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="20*"/>
+                    <ColumnDefinition Width="50*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                    <ColumnDefinition Width="10*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    TextAlignment="Center"
+                    Grid.Column="0">
+                    Картотека Інтерполу
+                </TextBlock>
+                <TextBlock
+                    Grid.Column="1">
+                </TextBlock>
+                <Button 
+                    Grid.Column="2"
+                    Height="30"
+                    HorizontalAlignment="Center"
+                    Background="MediumBlue"
+                    Content="🏠 Домой" 
+                    Command="{Binding ShowHomeCommand}" 
+                    Margin="5"/>
+                <Button 
+                    Grid.Column="3"
+                    Height="30"
+                    HorizontalAlignment="Center"
+                    Background="MediumBlue"
+                    Content="Продивитися" 
+                    Command="{Binding ShowCriminalListCommand}" 
+                    Margin="5"/>
+                <Button
+                    Grid.Column="4"
+                    Height="30"
+                    HorizontalAlignment="Center"
+                    Background="MediumBlue"
+                    Content="Додати" 
+                    Command="{Binding ShowComplaintsCommand}" 
+                    Margin="5"/>
+            </Grid>
+        </Border>    
+        
+        
+        <!-- <ContentControl Grid.Row="1" -->
+        <!--                 Grid.ColumnSpan="3" Content="{Binding CurrentUser}" /> -->
+        <!-- <ContentControl -->
+        <!--     Grid.Row="1" -->
+        <!--     Grid.ColumnSpan="3" -->
+        <!--     Content="{Binding CurrentPage}" /> -->
+        <ContentControl Grid.Row="1" Grid.ColumnSpan="3"
+                        Content="{Binding DisplayedContent}" />
+    </Grid>
+</Window>

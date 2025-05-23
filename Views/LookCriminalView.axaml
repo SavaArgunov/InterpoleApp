@@ -1,0 +1,38 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:vm="clr-namespace:InterpoleApp.ViewModels"
+    xmlns:models="clr-namespace:InterpoleApp.Models"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime"
+    x:Class="InterpoleApp.Views.LookCriminalView"
+    x:DataType="vm:LookCriminalViewModel">
+    <Grid RowDefinitions="50,50,50,50,50,50,50,50" ColumnDefinitions="15*,90*">
+        <TextBlock Grid.Row="0" Grid.Column="0" Text="Ім'я злочинника:"></TextBlock>
+        <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Criminal.FullName}"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Країна походження:"></TextBlock>
+        <TextBlock Grid.Row="1" Grid.Column="1" Text="{Binding Criminal.Country}"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Рівень небезпеки:"></TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="1" Text="{Binding Criminal.DangerLevel}"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Зріст:"></TextBlock>
+        <TextBlock Grid.Row="3" Grid.Column="1" Text="{Binding Criminal.Size}"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Колір очей:"></TextBlock>
+        <TextBlock Grid.Row="4" Grid.Column="1" Text="{Binding Criminal.EyesColor}"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Тип порушення:"></TextBlock>
+        <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Criminal.CrimeType}"></TextBlock>
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Улики" />
+        <ListBox Grid.Row="6" Grid.Column="0" ItemsSource="{Binding Criminal.Evidences}">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Title}" PointerPressed="EditEvidenceBtn_Click"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button
+            Content="Додати уліку"
+            Grid.Row="6"
+            Grid.Column="1"
+            Click="AddEvidenceBtn_Click"
+            ></Button>
+        <Button Grid.Row="7" Grid.Column="1" Content="Повернутися" VerticalAlignment="Bottom" HorizontalAlignment="Left" Click="BackButton_Click"></Button>
+    </Grid>
+</UserControl>

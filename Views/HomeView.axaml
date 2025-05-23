@@ -1,0 +1,25 @@
+﻿<UserControl
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Class="InterpoleApp.Views.HomeView">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Элемент в строке 0, колонке 0 -->
+        <TextBlock Text="Имя:" Grid.Row="0" Grid.Column="0"/>
+
+        <!-- Элемент в строке 0, колонке 1 -->
+        <TextBox Grid.Row="0" Grid.Column="1"/>
+
+        <!-- Элемент в строке 1, колонке 0 и 1 (объединённая ячейка) -->
+        <Button Content="Сохранить" Grid.Row="1" Grid.ColumnSpan="2"/>  
+    </Grid>
+</UserControl>

@@ -35,6 +35,10 @@
                 </ComboBox.ItemTemplate>
             </ComboBox>
         </StackPanel>
+        <Button Grid.Column="0" Grid.Row = "5" Content="Додати нового преступника"
+                Click="AddButton_Click"
+                
+                HorizontalAlignment="Right" Width="100"/>
         <Button Grid.Column="1" Grid.Row = "5" Content="Сохранити"
                 Command="{Binding SaveCommand}"
                 HorizontalAlignment="Right" Width="100"/>
