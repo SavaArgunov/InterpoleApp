@@ -1,0 +1,22 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="InterpoleApp.App"
+             xmlns:local="using:InterpoleApp"
+             xmlns:viewModels="clr-namespace:InterpoleApp.ViewModels"
+             xmlns:conv="clr-namespace:InterpoleApp.Systems"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+             <!-- <Application.Resources> -->
+             <!--     <local:DangerLevelTextConverter x:Key="DangerLevelTextConverter"/> -->
+             <!-- </Application.Resources> -->
+             <Application.Resources>
+                 <conv:DangerLevelTextConverter x:Key="DangerLevelTextConverter" />
+             </Application.Resources>
+             <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+  
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+</Application>

@@ -1,0 +1,22 @@
+[
+  {
+    "id": 0,
+    "name": "John",
+    "secondName": "Doe",
+    "fullName": "John Doe",
+    "dangerLevel": 5,
+    "size": 0,
+    "eyesColor": 0,
+    "country": "USA"
+  },
+  {
+    "id": 0,
+    "name": "John",
+    "secondName": "Doe",
+    "fullName": "John Doe",
+    "dangerLevel": 5,
+    "size": 0,
+    "eyesColor": 0,
+    "country": "USA"
+  }
+]

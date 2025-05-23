@@ -4,10 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Reactive;
 using System.Threading.Tasks;
+using Avalonia.Controls;
 using InterpoleApp.Database;
 using InterpoleApp.Models;
 using ReactiveUI;
 using InterpoleApp.ViewModels;
+using InterpoleApp.Views;
 
 namespace InterpoleApp.ViewModels;
 
@@ -19,6 +21,7 @@ public class AddComplaintsViewModel : ReactiveObject
     public string Description { get; set; } = "";
     public Criminal? RelatedCriminal { get; set; }
     public ReactiveCommand<Unit, Complaint> SaveCommand { get; }
+    public ReactiveCommand<Unit, Criminal> AddNewCriminalCommand { get;}
     public ObservableCollection<Criminal> CriminalsList { get; set; } = new();
     public JsonStorageService jsonService = new JsonStorageService();
     public AddComplaintsViewModel()
@@ -51,11 +54,19 @@ public class AddComplaintsViewModel : ReactiveObject
             Console.WriteLine(c.Name);
             this.CriminalsList.Add(c);
         }
-            
-        
-        
         await jsonService.SaveAllAsync(this.CriminalsList.ToList());
         Console.WriteLine("Сохраняем в: " + Path.GetFullPath("Database/criminals.json"));
-        //UpdateList();
+    }
+
+    public async Task AddNewCriminal(Window owner)
+    {
+        var win = new AddCriminalView(); // не DataContext вручную, всё уже делается внутри ShowDialogAsync
+        Criminal? result = await win.ShowDialogAsync(owner);
+
+        if (result is not null)
+        {
+            CriminalsList.Add(result);
+            RelatedCriminal = result;
+        }
     }
 }

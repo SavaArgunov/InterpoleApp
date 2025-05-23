@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
+//using Avalonia.Controls.Shapes;
 using InterpoleApp.Database;
 using InterpoleApp.Models;
 using InterpoleApp.Models.Enums;
+using InterpoleApp.Systems;
 using ReactiveUI;
 using InterpoleApp.Views;
 
@@ -17,6 +20,17 @@ public class ComplaintsViewModel : ReactiveObject
     
     public ObservableCollection<Complaint> Complaints { get; } = new();
     public ObservableCollection<Complaint> FilteredComplaints { get; } = new();
+    public JsonStorageService jsonService = new JsonStorageService();
+    private string _searchQuery = "";
+    public string SearchQuery
+    {
+        get => _searchQuery;
+        set
+        {
+            this.RaiseAndSetIfChanged(ref _searchQuery, value);
+            ApplySearch();
+        }
+    }
 
     private Complaint? _selectedComplaint;
     public Complaint? SelectedComplaint
@@ -31,28 +45,28 @@ public class ComplaintsViewModel : ReactiveObject
             }
         }
     }
+    private async void Load()
+    {
+        await InitBase();
+    }
+    private async Task InitBase()
+    {
+        
+        var loaded = await jsonService.GetAllAsync<Complaint>();
+
+        // Копируем в ObservableCollection
+        this.Complaints.Clear();
+        foreach (var c in loaded)
+            this.Complaints.Add(c);
+        
+        
+        await jsonService.SaveAllAsync(this.Complaints.ToList());
+        Console.WriteLine("Сохраняем в: " + Path.GetFullPath("Database/complaints.json"));
+        UpdateList();
+    }
     public ComplaintsViewModel()
     {
-        Criminal criminal = new Criminal
-        {
-            Name = "Яшув",
-            secondName = "Жецкий",
-            Country = "Польша",
-            CrimeType = CrimeType.Вбивство,
-            DangerLevel = 2,
-            EyesColor = EyeColor.Зелений,
-        };
-    
-        Complaint complaint = new Complaint
-        {
-            Country = "Польша",
-            Department = "Policja",
-            Title = "Жалоба на угрозы",
-            Description = "Подозреваемый угрожал свидетелю...",
-            Date = DateTime.Now,
-            RelatedCriminal = criminal
-        };
-        Complaints.Add(complaint);
+        Load();
         Console.WriteLine(Complaints.Count);
         UpdateList();
     }
@@ -69,29 +83,27 @@ public class ComplaintsViewModel : ReactiveObject
             Console.WriteLine("Adding new complaint " + complaint.Title);
             Complaints.Add(complaint);
             UpdateList();
-            //await _jsonService.SaveAllAsync(Criminals.ToList());
+            await _jsonService.SaveAllAsync(Complaints.ToList());
         }
+    }
+    private void ApplySearch()
+    {
+        var filtered = Levenshtein.ApplySearch(
+            Complaints,
+            c => c.Title,
+            SearchQuery
+        );
+
+        FilteredComplaints.Clear();
+        foreach (var c in filtered)
+            FilteredComplaints.Add(c);
     }
     public void UpdateList()
     {
-        //Console.WriteLine("UpdateList() called " + DateTime.Now);
         FilteredComplaints.Clear();
         foreach (var item in Complaints)
         {
             FilteredComplaints.Add(item);
         }
     }
-    // private void OpenCriminalCard(Criminal criminal)
-    // {
-    //     if (App.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop &&
-    //         desktop.MainWindow?.DataContext is MainViewModel main)
-    //     {
-    //         main.CurrentUser = new CriminalDetailView
-    //         {
-    //             DataContext = new CriminalDetailViewModel(criminal)
-    //         };
-    //         main.CurrentPage = null;
-    //         main.RaisePropertyChanged(nameof(main.DisplayedContent));
-    //     }
-    // }
 }
