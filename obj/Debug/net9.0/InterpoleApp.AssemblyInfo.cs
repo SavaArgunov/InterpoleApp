@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InterpoleApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a40b108c407956370495f4d455b7d5fcf7dda35")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+59f76e75d68bbcf101db0c97dab87661460e3a2a")]
 [assembly: System.Reflection.AssemblyProductAttribute("InterpoleApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InterpoleApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
