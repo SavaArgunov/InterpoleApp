@@ -37,9 +37,10 @@ public partial class LookCriminalView : ReactiveUserControl<LookCriminalViewMode
 
     private void AddEvidenceBtn_Click(object? sender, RoutedEventArgs e)
     {
-        if (ViewModel is { } vm && VisualRoot is Window owner)
+        if (ViewModel is { } vm && VisualRoot is Window owner && DataContext is LookCriminalViewModel LCVM)
         {
-             vm.AddEvidDialog(owner);
+             Criminal criminal = LCVM.Criminal;
+             vm.AddEvidDialog(owner, criminal);
         }
     }
 

@@ -12,7 +12,7 @@ public class AddEvidenceViewModel : ReactiveObject
     public ObservableCollection<EvidenceType> Categories { get; }
     public string title { get; set; } = "";
     public string description { get; set; } = "";
-    public Criminal relatedCriminal { get; set; } = new();
+    public Guid relatedCriminalID { get; set; } = new();
     private EvidenceType _evidenceType;
     public EvidenceType evidenceType
     {
@@ -20,8 +20,9 @@ public class AddEvidenceViewModel : ReactiveObject
         set => this.RaiseAndSetIfChanged(ref _evidenceType, value);
     }
     public ReactiveCommand<Unit, Evidence> SaveCommand { get; }
-    public AddEvidenceViewModel()
+    public AddEvidenceViewModel(Criminal criminal)
     {
+        relatedCriminalID = criminal.id;
         Categories = new ObservableCollection<EvidenceType>(
             Enum.GetValues(typeof(EvidenceType)) as EvidenceType[]
         );
@@ -29,7 +30,7 @@ public class AddEvidenceViewModel : ReactiveObject
         {
             Title = title,
             Description = description,
-            //RelatedCriminal = relatedCriminal,
+            RelatedCriminalId = relatedCriminalID,
             EvidenceType = evidenceType,
         });
     }

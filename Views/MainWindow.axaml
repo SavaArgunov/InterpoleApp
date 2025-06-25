@@ -46,19 +46,11 @@
                     Grid.Column="1">
                 </TextBlock>
                 <Button 
-                    Grid.Column="2"
-                    Height="30"
-                    HorizontalAlignment="Center"
-                    Background="MediumBlue"
-                    Content="🏠 Домой" 
-                    Command="{Binding ShowHomeCommand}" 
-                    Margin="5"/>
-                <Button 
                     Grid.Column="3"
                     Height="30"
                     HorizontalAlignment="Center"
                     Background="MediumBlue"
-                    Content="Продивитися" 
+                    Content="Порушники" 
                     Command="{Binding ShowCriminalListCommand}" 
                     Margin="5"/>
                 <Button
@@ -66,19 +58,11 @@
                     Height="30"
                     HorizontalAlignment="Center"
                     Background="MediumBlue"
-                    Content="Додати" 
+                    Content="Скарги" 
                     Command="{Binding ShowComplaintsCommand}" 
                     Margin="5"/>
             </Grid>
         </Border>    
-        
-        
-        <!-- <ContentControl Grid.Row="1" -->
-        <!--                 Grid.ColumnSpan="3" Content="{Binding CurrentUser}" /> -->
-        <!-- <ContentControl -->
-        <!--     Grid.Row="1" -->
-        <!--     Grid.ColumnSpan="3" -->
-        <!--     Content="{Binding CurrentPage}" /> -->
         <ContentControl Grid.Row="1" Grid.ColumnSpan="3"
                         Content="{Binding DisplayedContent}" />
     </Grid>

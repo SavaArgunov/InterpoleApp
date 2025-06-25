@@ -64,10 +64,10 @@ C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\InterpoleApp.AssemblyInfoInputs.cache
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\InterpoleApp.AssemblyInfo.cs
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\InterpoleApp.csproj.CoreCompileInputs.cache
+C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\InterpoleApp.sourcelink.json
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\Interpol.8E440C48.Up2Date
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\InterpoleApp.dll
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\refint\InterpoleApp.dll
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\InterpoleApp.pdb
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\InterpoleApp.genruntimeconfig.cache
 C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\ref\InterpoleApp.dll
-C:\Users\Сава\dotnet\RiderProjects\InterpoleApp\InterpoleApp\obj\Debug\net9.0\InterpoleApp.sourcelink.json

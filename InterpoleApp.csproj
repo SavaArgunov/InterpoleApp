@@ -30,10 +30,10 @@
 
     <ItemGroup>
       <Compile Update="Views\LookCriminalView.axaml.cs">
-        <DependentUpon>LookCriminalViewView.axaml</DependentUpon>
+        <DependentUpon>LookCriminalView.axaml</DependentUpon>
       </Compile>
       <Compile Update="Views\LookComplainView.axaml.cs">
-        <DependentUpon>LookComplainView.axaml.axaml</DependentUpon>
+        <DependentUpon>LookComplainView.axaml</DependentUpon>
       </Compile>
     </ItemGroup>
 </Project>

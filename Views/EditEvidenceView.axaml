@@ -20,7 +20,7 @@
             <TextBlock Height="25" Text="Колір очей"></TextBlock>
             <ComboBox  Height="25" ItemsSource="{Binding Categories}" SelectedItem="{Binding evidenceType}"/>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row = "5" Content="Сохранити"
+        <Button Grid.Column="1" Grid.Row = "5" Content="Зберегти"
                 Command="{Binding SaveCommand}"
                 HorizontalAlignment="Right" Width="100"/>
     </Grid>

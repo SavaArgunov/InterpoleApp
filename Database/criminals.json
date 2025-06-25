@@ -1,27 +1,13 @@
 [
   {
-    "id": "c4afcc69-e628-49ea-89ea-f220a0d3da70",
-    "name": "Test1",
-    "secondName": "gsf",
-    "fullName": "Test1 gsf",
-    "dangerLevel": 3,
-    "size": 1242,
-    "eyesColor": 1,
-    "crimeType": 2,
-    "country": "dfs",
-    "evidences": [
-      {
-        "id": "4f8baf25-bcf2-4091-9745-a1a42371ca56",
-        "title": "Evid1",
-        "description": "dfdgs",
-        "evidenceType": 2
-      },
-      {
-        "id": "f4f9f8cf-18fa-4acb-bb1a-3f6989506dd0",
-        "title": "Evid2",
-        "description": "sgfadgndfs",
-        "evidenceType": 2
-      }
-    ]
+    "id": "36ebdbe8-1067-4873-bcfc-0566c9625fd2",
+    "name": "\u0438\u0430\u0447 \u043C\u0441",
+    "secondName": "\u0441\u0438\u043C\u0447",
+    "fullName": "\u0438\u0430\u0447 \u043C\u0441 \u0441\u0438\u043C\u0447",
+    "dangerLevel": 1,
+    "size": 0,
+    "eyesColor": 0,
+    "crimeType": 0,
+    "country": " \u0438\u043C\u0441\u0447"
   }
 ]

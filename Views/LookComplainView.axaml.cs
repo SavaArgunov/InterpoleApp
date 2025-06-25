@@ -30,28 +30,50 @@ public partial class LookComplainView : ReactiveUserControl<LookComplainViewMode
             if (App.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop &&
                 desktop.MainWindow?.DataContext is MainViewModel main)
             {
-                var criminalListVM = main.CriminalListVM;
-                
+                    Console.WriteLine("Entered 2 MergeBtn_Click");
+                    var criminalListVM = main.CriminalListVM;
                     criminalListVM.Criminals.Add(criminal);
                     criminalListVM.jsonService.SaveAllAsync(criminalListVM.Criminals.ToList());
                     criminalListVM.UpdateList(); // если он делает фильтрацию или сортировку
                     
-                    
                     var complaintVM = main.ComplaintsVM;
 
+                    Complaint toDelete = new();
                     // Знайдемо скаргу, до якої був прив’язаний цей порушник
-                    var toDelete = complaintVM.Complaints
-                        .FirstOrDefault(c => c.RelatedCriminal?.id == criminal.id);
+                    foreach (var complaint in complaintVM.Complaints)
+                    {
+                        if (complaint.RelatedCriminal.id == criminal.id)
+                        {
+                            toDelete = complaint;
+                        }
+                    }
+                    // var toDelete = complaintVM.Complaints
+                    //     .FirstOrDefault(c => c.RelatedCriminal?.id == criminal.id);
+                    //Console.WriteLine(toDelete.RelatedCriminal.Name);
+                    if (toDelete?.RelatedCriminal != null)
+                    {
+                        Console.WriteLine(toDelete.RelatedCriminal.Name);
+                    }
 
                     if (toDelete != null)
                     {
                         complaintVM.Complaints.Remove(toDelete);
                         complaintVM.jsonService.SaveAllAsync(complaintVM.Complaints.ToList());
                         complaintVM.UpdateList(); // якщо є фільтрація
+
+                        var listView = new CriminalListView
+                        {
+                            DataContext = new CriminalListViewModel()
+                        };
+
+                        main.CurrentUser = listView;
+                        main.CurrentPage = null;
+                        main.NotifyDisplayedContentChanged();
                     }
+
+                    
             }
         }
-        
     }
     private void LookBtn_Click(object? sender, RoutedEventArgs e)
     {

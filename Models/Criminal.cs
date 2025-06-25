@@ -17,7 +17,7 @@ public class Criminal : Iperson
     public CrimeType CrimeType { get; set; }
     public string Country { get; set; }
 
-    public ObservableCollection<Evidence> Evidences { get; set; } = new();
+
     public string GetName() => $"{Name} {secondName}";
     public string GetCountry() => $"{Country}";
 }

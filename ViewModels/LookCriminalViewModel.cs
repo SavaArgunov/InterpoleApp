@@ -25,31 +25,25 @@ public class LookCriminalViewModel : ViewModelBase
     public int size { get; set; }
     public EyeColor EyeColor { get; set; }
     public CrimeType CrimeType { get; set; }
-    public ObservableCollection<Evidence> Evidences => Criminal.Evidences;
+    public ObservableCollection<Evidence> Evidences { get; set; } = new();
+    public JsonStorageService EvidenceStorageService = new JsonStorageService();
     public LookCriminalViewModel(Criminal criminal)
     {
+        InitBase();
         Criminal = criminal;
-        Console.WriteLine("Criminal has bid " + Criminal.Evidences.Count + " small has " + criminal.Evidences.Count);
+        
     }
-    public async Task AddEvidDialog(Window owner)
+    public async Task AddEvidDialog(Window owner, Criminal criminal)
     {
         var _jsonService = new JsonStorageService();
         var dialog = new AddEvidenceView();
-        var evid = await dialog.ShowDialogAsync(owner);
-
+        var evid = await dialog.ShowDialogAsync(owner, criminal);
         if (evid != null && App.Current.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop &&
             desktop.MainWindow?.DataContext is MainViewModel main)
         {
-            var target = main.CriminalListVM.Criminals.FirstOrDefault(c => c.id == Criminal.id);
-            //evid.RelatedCriminal = Criminal;
             Console.WriteLine("Before add: Criminal in list?");
-            if (target is not null)
-            {
-                target.Evidences.Add(evid);
-                await main.CriminalListVM.SaveAllCriminals();
-            }
-            Console.WriteLine("After add:");
-            await main.CriminalListVM.SaveAllCriminals();
+            Evidences.Add(evid);
+            EvidenceStorageService.SaveAllAsync<Evidence>(Evidences.ToList());
         }
     }
     public async Task EditViaDialog(Window owner, Evidence evidence)
@@ -68,6 +62,16 @@ public class LookCriminalViewModel : ViewModelBase
                 Evidences[index] = evid;
             }
             await main.CriminalListVM.SaveAllCriminals();
+        }
+    }
+
+    async Task InitBase()
+    {
+        var loaded = await EvidenceStorageService.GetAllAsync<Evidence>();
+        Evidences.Clear();
+        foreach (var c in loaded)
+        {
+            Evidences.Add(c);
         }
     }
 }

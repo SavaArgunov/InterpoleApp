@@ -36,7 +36,7 @@
             <TextBlock Height="25" Text="Тип злочину"></TextBlock>
             <ComboBox  Height="25" ItemsSource="{Binding crimeCategories}" SelectedItem="{Binding CrimeType}"/>
         </StackPanel>
-        <Button Grid.Column="1" Grid.Row = "5" Content="Сохранити"
+        <Button Grid.Column="1" Grid.Row = "5" Content="Зберегти"
                 Command="{Binding SaveCommand}"
                 HorizontalAlignment="Right" Width="100"/>
     </Grid>

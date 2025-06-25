@@ -20,7 +20,7 @@
         <TextBlock Grid.Row="5" Grid.Column="0" Text="Тип порушення:"></TextBlock>
         <TextBlock Grid.Row="5" Grid.Column="1" Text="{Binding Criminal.CrimeType}"></TextBlock>
         <TextBlock Grid.Row="6" Grid.Column="0" Text="Улики" />
-        <ListBox Grid.Row="6" Grid.Column="0" ItemsSource="{Binding Criminal.Evidences}">
+        <ListBox Grid.Row="6" Grid.Column="0" ItemsSource="{Binding Evidences}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Title}" PointerPressed="EditEvidenceBtn_Click"/>

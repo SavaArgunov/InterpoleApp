@@ -16,9 +16,9 @@ public partial class AddEvidenceView : ReactiveWindow<AddEvidenceViewModel>
         AvaloniaXamlLoader.Load(this);
     }
 
-    public async Task<Evidence?> ShowDialogAsync(Window owner)
+    public async Task<Evidence?> ShowDialogAsync(Window owner, Criminal criminal)
     {
-        var vm = new AddEvidenceViewModel();
+        var vm = new AddEvidenceViewModel(criminal);
         DataContext = vm;
 
         var tcs = new TaskCompletionSource<Evidence?>();

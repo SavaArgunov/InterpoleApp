@@ -78,7 +78,7 @@ public class MainViewModel : ReactiveObject
         });
         
         // Показываем главную по умолчанию
-        CurrentPage = new HomeViewModel();
+        CurrentPage = new CriminalListViewModel();
     }
     public void ShowCriminalDetails(Criminal criminal)
     {

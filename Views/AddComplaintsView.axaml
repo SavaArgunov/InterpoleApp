@@ -22,7 +22,7 @@
         </StackPanel>
         <StackPanel Grid.Row = "3" Grid.ColumnSpan="2">
             <TextBlock Height="25" Text="Опис порушення"></TextBlock>
-            <TextBox  Height="25" Watermark="Зріст" Text="{Binding Description}" />
+            <TextBox  Height="25" Watermark="Опис" Text="{Binding Description}" />
         </StackPanel>
         <StackPanel Grid.Row="4" Grid.ColumnSpan="2">
             <TextBlock Height="25" Text="Пов'язаний порушник"></TextBlock>
@@ -39,7 +39,7 @@
                 Click="AddButton_Click"
                 
                 HorizontalAlignment="Right" Width="100"/>
-        <Button Grid.Column="1" Grid.Row = "5" Content="Сохранити"
+        <Button Grid.Column="1" Grid.Row = "5" Content="Зберегти"
                 Command="{Binding SaveCommand}"
                 HorizontalAlignment="Right" Width="100"/>
     </Grid>
